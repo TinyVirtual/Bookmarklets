@@ -1,0 +1,30 @@
+// Definitions
+$+".klet.js"
+$[#]=name
+$[%]=desc
+
+
+// The tags
+@eruda={
+  # Eruda (Inspect Devtools)
+  % Inspect tool 
+}
+
+@fake_block={
+  # Fake block
+}
+
+@fullscreen={
+  # Fullscreen
+  % Optimal for mobile devices
+}
+
+@remove_pitch_correction={
+  # Remove Pitch Correction
+  % Makes slowing down or up change pitch too
+}
+
+@vibrato={
+  # Vibrato
+  % Oh It'S aLl BuGgEd WtF
+}
