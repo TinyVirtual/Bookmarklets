@@ -28,3 +28,8 @@ $[%]=desc
   # Vibrato
   % Oh It'S aLl BuGgEd WtF
 }
+
+@toogle_pswd={
+  # Show Passwords
+  % Toggle passwords visibility
+}
