@@ -27,3 +27,4 @@ javascript:
     }
   }
 )();
+/* klet.js$title=[Eruda (Inspect/DevTools)] */
