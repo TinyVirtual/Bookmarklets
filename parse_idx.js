@@ -8,6 +8,13 @@ function parse_idx(idx){
     custom: {}
   };
 
+  let lookup = {
+    "false":!1,
+    "true":!0,
+    "null":null,
+    "[]":[]
+  }
+
   lines.forEach((a,i)=>{
     if(a.startsWith("$+")){
       attributes.sufix = a.replace(/^\$\+|\"/g,"")
@@ -35,10 +42,23 @@ function parse_idx(idx){
       let v = variables.find(l => l.symbol == lines[i][0])
       if(v){
         entries[current_id][v.name] = lines[i].slice(2)
+        if(!isNaN(Number(lines[i].slice(2)))){
+          entries[current_id][v.name] = Number(lines[i].slice(2))
+        }
+        if(Object.keys(lookup).includes(lines[i].slice(2))){
+          entries[current_id][v.name] = lookup[lines[i].slice(2)]
+        }
         if((/^\[.+(?<![\\,])\]/).test(lines[i].slice(2))){
           entries[current_id][v.name] = lines[i].slice(2).trim().replace(/^\[|\]$/gm,"").split(/(?<![\\]),/g)
           entries[current_id][v.name].forEach((q,w)=>{
             entries[current_id][v.name][w] = q.replaceAll(/\\./gm,x=>x[1])
+            
+            if(!isNaN(Number(q)) ){
+              entries[current_id][v.name][w] = Number(q)
+            }
+            if(Object.keys(lookup).includes(q)){
+              entries[current_id][v.name][w] = lookup[q]
+            }
           })
         }
 
@@ -60,7 +80,7 @@ function parse_idx(idx){
   let entries_keys = Object.keys(entries)
   for(let k of entries_keys){
     for(let v of variables){
-      if(typeof entries[k][v.name] === "undefined" || entries[k][v.name]==null){
+      if(typeof entries[k][v.name] === "undefined"){
         entries[k][v.name] = "";
       }
     }
