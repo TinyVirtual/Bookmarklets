@@ -42,7 +42,7 @@ function parse_idx(idx){
       let v = variables.find(l => l.symbol == lines[i][0])
       if(v){
         entries[current_id][v.name] = lines[i].slice(2)
-        if(!isNaN(Number(lines[i].slice(2)))){
+        if(!isNaN(Number(lines[i].slice(2)??"."))){
           entries[current_id][v.name] = Number(lines[i].slice(2))
         }
         if(Object.keys(lookup).includes(lines[i].slice(2))){
@@ -53,7 +53,7 @@ function parse_idx(idx){
           entries[current_id][v.name].forEach((q,w)=>{
             entries[current_id][v.name][w] = q.replaceAll(/\\./gm,x=>x[1])
             
-            if(!isNaN(Number(q)) ){
+            if(!isNaN(Number(q??".")) ){
               entries[current_id][v.name][w] = Number(q)
             }
             if(Object.keys(lookup).includes(q)){
