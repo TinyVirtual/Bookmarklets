@@ -59,3 +59,4 @@ javascript:(()=>{
     }
   )
 })();
+/* klet.js$title=[Vibrato Effect]$desc=[add a vibrato effect to currently playing video or audio] */
